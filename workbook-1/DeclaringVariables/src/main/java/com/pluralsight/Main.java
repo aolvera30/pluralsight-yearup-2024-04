@@ -7,6 +7,9 @@ public class Main
         // declare variables for each of the following:
 
         // a vehicle identification number in the range 1000000 - 9999999
+        int VehicleIdNumber;
+        VehicleIdNumber = 1000000;
+        System.out.println("VehicleIdNumber:" + VehicleIdNumber);
 
 
         // a vehicle make /model (i.e. Ford Explorer)
