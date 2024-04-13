@@ -13,7 +13,6 @@ public class Main
         double regularBasePrice = 5.45;
         int large = 2;
         double largeBaseSandwichPrice = 8.95;
-        //int age;
 
         // Sandwich size
         System.out.print("Sandwich number 1 or 2? ");
