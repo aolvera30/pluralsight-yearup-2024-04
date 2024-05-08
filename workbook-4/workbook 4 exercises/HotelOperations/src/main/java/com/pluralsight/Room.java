@@ -46,7 +46,7 @@ public class Room
 
 
 
-    private void checkIn()
+    public void checkIn()
     {
         if(!isOccupied){
             isOccupied = true;
@@ -58,7 +58,7 @@ public class Room
 
     }
 
-    private void  checkOut()
+    public void checkOut()
     {
         if(isOccupied){
             cleanRoom();
@@ -70,7 +70,7 @@ public class Room
 
     }
 
-    private void cleanRoom()
+    public void cleanRoom()
     {
         isDirty = false;
         System.out.println("Room cleaned");
