@@ -42,6 +42,7 @@ public class Reservation
     public void setNumberOfNights(int numberOfNights)
     {
         this.numberOfNights = numberOfNights;
+        calculatePricePerNight();
     }
 
     public boolean isWeekend()
@@ -60,13 +61,33 @@ public class Reservation
         return pricePerNight;
     }
 
-    private void calculatePricePerNight()
-    {
-      switch (roomType.toLowerCase()) {
-          case "king":
+    private void calculatePricePerNight() {
+        double basePrice;
+        switch (roomType.toLowerCase()) {
+            case "king":
+                basePrice = 139.00;
+                break;
+            case "double":
+                basePrice = 124.00;
+                break;
+            default:
+                basePrice = 0.00; // Default to 0 if room type is not recognized
+        }
 
-      }
+        if (isWeekend) {
+            basePrice *= 1.10; // Increase price by 10% if it's a weekend
+        }
+
+        pricePerNight = basePrice;
+    }
+
+    // Derived getter for total reservation cost
+    public double getReservationTotal() {
+        return getPrice(); // Total cost is price per night multiplied by number of nights
     }
 
 
 }
+
+
+
