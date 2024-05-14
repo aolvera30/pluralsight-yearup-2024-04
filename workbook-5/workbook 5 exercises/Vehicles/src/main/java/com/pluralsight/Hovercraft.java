@@ -6,6 +6,19 @@ public class Hovercraft extends Vehicles
     private boolean helmetRequired;
     private boolean lifeJacketRequired;
 
+    public Hovercraft(int vin,String vehicleType,int numberOfPassengers,int cargoCapacity,int fuelCapacity,
+                     String color, double totalPassengerWeightLimit,boolean helmetRequired,boolean lifeJacketRequired)
+    {
+        // super = the parent class
+        super(vin,vehicleType,numberOfPassengers,cargoCapacity,fuelCapacity,color);
+
+        this.totalPassengerWeightLimit = totalPassengerWeightLimit;
+        this.helmetRequired = helmetRequired;
+        this.lifeJacketRequired = lifeJacketRequired;
+
+    }
+
+
     public double getTotalPassengerWeightLimit()
     {
         return totalPassengerWeightLimit;

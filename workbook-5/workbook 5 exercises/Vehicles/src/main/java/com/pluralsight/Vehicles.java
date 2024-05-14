@@ -9,6 +9,17 @@ public class Vehicles
     private int fuelCapacity;
     private String color;
 
+    public Vehicles(int vin,String vehicleType,int numberOfPassengers,int cargoCapacity,int fuelCapacity,String color)
+    {
+        this.vin = vin;
+        this.vehicleType = vehicleType;
+        this.numberOfPassengers = numberOfPassengers;
+        this.cargoCapacity = cargoCapacity;
+        this.fuelCapacity = fuelCapacity;
+        this.color = color;
+    }
+
+
     public int getVin()
     {
         return vin;
@@ -67,5 +78,18 @@ public class Vehicles
     public void setColor(String color)
     {
         this.color = color;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Vehicles{" +
+                "vin=" + vin +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", numberOfPassengers=" + numberOfPassengers +
+                ", cargoCapacity=" + cargoCapacity +
+                ", fuelCapacity=" + fuelCapacity +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

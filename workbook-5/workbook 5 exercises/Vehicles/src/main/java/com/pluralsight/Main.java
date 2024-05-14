@@ -4,13 +4,11 @@ public class Main
 {
     public static void main(String[] args) {
 
-        SemiTruck bigT = new SemiTruck();
 
-        bigT.setNumberOfWheels(18);
-        bigT.setSleeperCab(true);
+        SemiTruck semi = new SemiTruck(56789,"Semi Truck",3,80000,100,"Black",18,true);
 
-        System.out.println("Number of Wheels: " + bigT.getNumberOfWheels());
-        System.out.println("Sleeper Cab: " + bigT.isSleeperCab());
+        System.out.println(semi);
+
 
     }
 
