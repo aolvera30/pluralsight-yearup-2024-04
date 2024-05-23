@@ -4,6 +4,7 @@ import com.pluralsight.models.Employee;
 import com.pluralsight.models.Person;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class PersonService
@@ -11,39 +12,90 @@ public class PersonService
 
     public List<Person> findPeople(List<Person> people, String name)
     {
-        // search for people by first name
-        // return a new List<Person> with the search results
-        return new ArrayList<>();
+        List<Person> result = new ArrayList<>();
+        for (Person person : people) {
+            if (person.getFirstName().equalsIgnoreCase(name)) {
+                result.add(person);
+            }
+        }
+        return result;
     }
+
 
     public List<Person> findPeople(List<Person> people, int age)
     {
-        return new ArrayList<>();
+        List<Person> result = new ArrayList<>();
+        for (Person person : people) {
+            if (person.getAge() == age) {
+                result.add(person);
+            }
+        }
+        return result;
     }
 
     public int calculateAverageAge(List<Person> people)
     {
-        return 0;
+        if (people.isEmpty()) {
+            return 0;
+        }
+        int totalAge = 0;
+        for (Person person : people) {
+            totalAge += person.getAge();
+        }
+        return totalAge / people.size();
+
     }
 
     public int findOldestAge(List<Person> people)
     {
-        return 0;
+        if (people.isEmpty()) {
+            return 0;
+        }
+        int oldestAge = Integer.MIN_VALUE;
+        for (Person person : people) {
+            if (person.getAge() > oldestAge) {
+                oldestAge = person.getAge();
+            }
+        }
+        return oldestAge;
+
     }
 
     public int findYoungestAge(List<Person> people)
     {
-        return 0;
+        if (people.isEmpty()) {
+            return 0;
+        }
+        int youngestAge = Integer.MAX_VALUE;
+        for (Person person : people) {
+            if (person.getAge() < youngestAge) {
+                youngestAge = person.getAge();
+            }
+        }
+        return youngestAge;
+
     }
 
     public List<Person> sortYoungestFirst(List<Person> people)
     {
-        return new ArrayList<>();
+        // Create a copy of the original list
+        List<Person> sortedList = new ArrayList<>(people);
+
+        // Use the sort method with a Comparator to sort by age
+        sortedList.sort(Comparator.comparingInt(Person::getAge));
+
+        return sortedList;
+
     }
 
     public List<Person> sortOldestFirst(List<Person> people)
     {
-        return new ArrayList<>();
+        List<Person> sortedList = new ArrayList<>(people);
+
+        sortedList.sort(Comparator.comparingInt(Person::getAge).reversed());
+
+        return sortedList;
+        
     }
 
     public List<Employee> createEmployees(List<Person> people)
