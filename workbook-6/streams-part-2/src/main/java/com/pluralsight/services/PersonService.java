@@ -5,25 +5,32 @@ import com.pluralsight.models.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 public class PersonService
 {
 
     public List<Person> findPeople(List<Person> people, String name)
     {
-        // search for people by first name
-        // return a new List<Person> with the search results
-        return new ArrayList<>();
+        return people.stream()
+                     .filter(person -> person.getFirstName().equalsIgnoreCase(name))
+                     .collect(Collectors.toList());
     }
 
     public List<Person> findPeople(List<Person> people, int age)
     {
-        return new ArrayList<>();
+        return people.stream()
+                     .filter(person -> person.getAge() == age)
+                     .collect(Collectors.toList());
     }
 
     public int calculateAverageAge(List<Person> people)
     {
-        return 0;
+        OptionalDouble average = people.stream()
+                                       .mapToInt(Person::getAge)
+                                       .average();
+        return average.isPresent() ? (int) average.getAsDouble() : 0;
     }
 
     public int findOldestAge(List<Person> people)
