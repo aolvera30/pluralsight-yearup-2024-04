@@ -1,57 +1,37 @@
 package com.pluralsight;
 
-import java.sql.*;
+import java.util.Scanner;
 
-public class Main
-{
+public class Main {
     public static void main(String[] args)
     {
-
-        try
-        {
-            // load the MySQL Driver
-           // Class.forName("com.mysql.cj.jdbc.Driver");
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        Scanner scanner = new Scanner(System.in);
 
 
-            // 1. open a connection to the database
-            // use the database URL to point to the correct database
-            Connection connection;
-            connection =DriverManager.getConnection(
-            "jdbc:mysql:/ / localhost:33o6/northwind",
-                "root",
-                "YUm15510n"
-                );
+        while (true) {
+            System.out.println("What do you want to do?");
+            System.out.println("1) Display all products");
+            System.out.println("0) Exit");
+            System.out.print("Select an option: ");
 
-            // 2. execute a statement
-            String sql = """
-                    SELECT Id
-                        , Name
-                        , CountryCode
-                    FROM city;
-                    """;
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            int option = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
 
-            // 2 a. - read the results
-            while(resultSet.next())
-            {
-                int id = resultSet.getInt("Id");
-                String name = resultSet.getString("Name");
-                String country = resultSet.getString("CountryCode");
-
-                System.out.printf("%3d  %-30s %s\n", id, name, country);
+            if (option == 0) {
+                break;
             }
 
-
-            // 3. close the connection
-            connection.close();
-
-
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-
-
+            switch (option) {
+                case 1:
+                    dbHandler.displayAllProducts();
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
         }
+
+        scanner.close();
+        System.out.println("Goodbye!");
     }
 }
