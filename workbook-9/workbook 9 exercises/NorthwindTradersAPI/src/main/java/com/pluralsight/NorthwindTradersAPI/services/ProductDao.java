@@ -1,8 +1,6 @@
 package com.pluralsight.NorthwindTradersAPI.services;
 
-
 import com.pluralsight.NorthwindTradersAPI.models.Product;
-
 import java.util.List;
 import java.util.Optional;
 
